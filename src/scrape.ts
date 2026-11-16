@@ -24,7 +24,7 @@ const inputSchema = z.object({
   waitForSelector: z
     .string()
     .optional()
-    .describe('CSS selector to wait for before returning. Requires renderJs.'),
+    .describe('CSS selector to wait for before returning. Turns on rendering.'),
 });
 
 export type ScrapflyScrapeInput = z.infer<typeof inputSchema>;
@@ -43,7 +43,7 @@ export const scrapflyScrape = (options: ScrapflyToolOptions<ScrapflyScrapeInput>
       const response = await resolveClient(options).scrape(
         new ScrapeConfig({
           url,
-          render_js: renderJs,
+          render_js: waitForSelector ? true : renderJs,
           asp,
           country,
           format: format ?? 'markdown',

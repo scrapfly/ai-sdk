@@ -60,7 +60,7 @@ Fetches a page and returns `{ url, statusCode, content }`.
 | `asp` | boolean | Anti-scraping protection bypass |
 | `country` | string | Proxy country code, for example `us` |
 | `format` | `markdown` (default), `text`, `clean_html` | Format of the content |
-| `waitForSelector` | string | CSS selector to wait for, with `renderJs` |
+| `waitForSelector` | string | CSS selector to wait for, turns on rendering |
 
 ### `scrapflyExtract`
 

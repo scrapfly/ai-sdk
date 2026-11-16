@@ -38,6 +38,12 @@ describe('scrapflyScrape', () => {
     expect(out).toEqual({ url: 'https://example.com', statusCode: 200, content: '# Hello' });
   });
 
+  it('turns on rendering when a selector is given', async () => {
+    const client = fakeClient();
+    await scrapflyScrape({ client }).execute!({ url: 'https://example.com', waitForSelector: '#x' }, callOptions);
+    expect(client.scrape.mock.calls[0][0]).toMatchObject({ render_js: true, wait_for_selector: '#x' });
+  });
+
   it('applies defaults and lets the input override them', async () => {
     const client = fakeClient();
     await scrapflyScrape({ client, defaults: { asp: true, format: 'text' } }).execute!(
