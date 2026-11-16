@@ -8,7 +8,7 @@ const inputSchema = z.object({
   capture: z
     .string()
     .optional()
-    .describe('"fullpage" (default) or a CSS selector of the element to capture.'),
+    .describe('Defaults to the viewport. Use a CSS selector to capture one element, or "fullpage" for the whole page, which may be too large for some models.'),
   resolution: z
     .string()
     .optional()
@@ -21,7 +21,7 @@ export type ScrapflyScreenshotOutput = { url: string; mediaType: string; base64:
 export const scrapflyScreenshot = (options: ScrapflyToolOptions<ScrapflyScreenshotInput> = {}): Tool<ScrapflyScreenshotInput, ScrapflyScreenshotOutput> =>
   tool({
     description:
-      'Take a screenshot of a web page through Scrapfly and return it as an image. Capture the full page or a single element.',
+      'Take a screenshot of a web page through Scrapfly and return it as an image. Captures the viewport by default, or a single element, or the full page.',
     inputSchema,
     execute: async (input) => {
       const { url, capture, resolution } = { ...options.defaults, ...input };
@@ -29,7 +29,7 @@ export const scrapflyScreenshot = (options: ScrapflyToolOptions<ScrapflyScreensh
         new ScreenshotConfig({
           url,
           format: 'jpg',
-          capture: capture ?? 'fullpage',
+          capture,
           resolution,
         }),
       );

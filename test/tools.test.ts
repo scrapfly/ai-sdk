@@ -79,16 +79,16 @@ describe('scrapflyExtract', () => {
 });
 
 describe('scrapflyScreenshot', () => {
-  it('captures fullpage by default and returns base64 plus image model output', async () => {
+  it('captures the viewport by default and returns base64 plus image model output', async () => {
     const client = fakeClient();
     const t = scrapflyScreenshot({ client });
     const out = await t.execute!({ url: 'https://example.com', resolution: '800x600' }, callOptions);
     expect(client.screenshot.mock.calls[0][0]).toMatchObject({
       url: 'https://example.com',
-      capture: 'fullpage',
       resolution: '800x600',
       format: 'jpg',
     });
+    expect(client.screenshot.mock.calls[0][0].capture).toBeUndefined();
     expect(out).toEqual({
       url: 'https://example.com',
       mediaType: 'image/jpeg',

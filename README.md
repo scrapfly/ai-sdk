@@ -78,7 +78,7 @@ Takes a JPEG screenshot and returns it to the model as an image. The tool result
 | Input | Type | Description |
 | --- | --- | --- |
 | `url` | string, required | Page to capture |
-| `capture` | string | `fullpage` (default) or a CSS selector |
+| `capture` | string | a CSS selector or `fullpage` (default: viewport; fullpage may be too large for some models) |
 | `resolution` | string | Viewport size, for example `1920x1080` |
 
 ## Docs
