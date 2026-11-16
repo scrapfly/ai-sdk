@@ -59,7 +59,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "peerDependencies": {
     "ai": "^7.0.0",
