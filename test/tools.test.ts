@@ -88,7 +88,7 @@ describe('scrapflyScreenshot', () => {
       resolution: '800x600',
       format: 'jpg',
     });
-    expect(client.screenshot.mock.calls[0][0].capture).toBeUndefined();
+    expect(client.screenshot.mock.calls[0][0].capture).toBe('viewport');
     expect(out).toEqual({
       url: 'https://example.com',
       mediaType: 'image/jpeg',

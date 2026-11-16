@@ -29,7 +29,7 @@ export const scrapflyScreenshot = (options: ScrapflyToolOptions<ScrapflyScreensh
         new ScreenshotConfig({
           url,
           format: 'jpg',
-          capture,
+          capture: capture ?? 'viewport',
           resolution,
         }),
       );
