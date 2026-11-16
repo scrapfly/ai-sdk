@@ -1,0 +1,68 @@
+{
+  "name": "@scrapfly/ai-sdk",
+  "version": "0.1.0",
+  "description": "Scrapfly web scraping, AI extraction and screenshots as Vercel AI SDK tools",
+  "main": "./dist/index.cjs",
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "scrapfly",
+    "ai-sdk",
+    "vercel",
+    "tools",
+    "web-scraping",
+    "screenshot"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@12.21.0",
+  "type": "module",
+  "dependencies": {
+    "scrapfly-sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "ai": "^7.0.173",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0",
+    "zod": "^4.6.7"
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scrapfly/ai-sdk.git"
+  },
+  "homepage": "https://scrapfly.io/docs",
+  "bugs": {
+    "url": "https://github.com/scrapfly/ai-sdk/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "ai": "^7.0.0",
+    "zod": "^3.25.76 || ^4.1.8"
+  }
+}
